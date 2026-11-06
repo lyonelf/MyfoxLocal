@@ -56,7 +56,7 @@ Il vous faut en plus l'**e-mail** et le **mot de passe** de votre compte Myfox h
 Sur n'importe quel PC avec Python 3 (pas besoin d'être sur le réseau de la centrale) :
 
 ```
-python3 myfox_local_serverAutoAprenant.py --cloud-dump
+python3 myfox_local_serverAutoAprenant --cloud-dump
 ```
 
 Le script demande les quatre informations au clavier (secret et mot de passe invisibles) et crée un dossier
@@ -64,7 +64,7 @@ Le script demande les quatre informations au clavier (secret et mot de passe inv
 secret ou jeton n'est écrit. Détails, limites (les capteurs de sécurité ne sont pas lisibles par l'API) et dépannage :
 voir **LISEZMOI_noms_du_cloud.md**.
 
-Contrôle : `python3 myfox_local_serverAutoAprenant.py --backup-check`.
+Contrôle : `python3 myfox_local_serverAutoAprenant --backup-check`.
 
 ---
 
@@ -79,13 +79,13 @@ Contrôle : `python3 myfox_local_serverAutoAprenant.py --backup-check`.
 Lancement en mode autonome :
 
 ```
-python3 myfox_local_serverAutoAprenant.py
+python3 myfox_local_serverAutoAprenant
 ```
 
 Le tableau de bord est alors sur `http://ADRESSE_DE_LA_MACHINE:8081`. Le port 8081 est le port par défaut du script ;
 `--web-port` permet d'en choisir un autre. Autotest facultatif : `--selftest` doit afficher « 10 table(s) sur 10 reproduite(s) ».
 
-Aide complète et protocole : `python3 myfox_local_serverAutoAprenant.py --reference`.
+Aide complète et protocole : `python3 myfox_local_serverAutoAprenant --reference`.
 
 ---
 
@@ -106,7 +106,7 @@ nslookup core.steadyfox.com
 Puis lancez :
 
 ```
-python3 myfox_local_serverAutoAprenant.py --relay --upstream ADRESSE_IP_DU_VRAI_SERVEUR:8888
+python3 myfox_local_serverAutoAprenant --relay --upstream ADRESSE_IP_DU_VRAI_SERVEUR:8888
 ```
 
 Si vous avez déjà redirigé le DNS (étape 4) et ne connaissez plus l'adresse réelle, interrogez un DNS public
@@ -227,7 +227,7 @@ scénarios, configurer les détecteurs, la caméra et la télécommande, consult
 
    [Service]
    WorkingDirectory=/opt/myfox
-   ExecStart=/usr/bin/python3 /opt/myfox/myfox_local_serverAutoAprenant.py
+   ExecStart=/usr/bin/python3 /opt/myfox/myfox_local_serverAutoAprenant
    Restart=always
    User=myfox
 
@@ -252,7 +252,7 @@ Tout se règle dans l'onglet **Sécurité** (à droite de *Aide*).
 1. **Créez le premier compte** (carte *Mon compte* : nom + mot de passe de 8 caractères minimum) : il est **super admin**. Tant qu'aucun compte
    n'existe, un bandeau d'avertissement reste affiché en haut de la page. Ensuite, chaque personne doit se connecter (12 heures, ou 30 jours
    avec « Rester connecté »). Après 5 échecs, l'adresse est bloquée 5 minutes. Mot de passe oublié : arrêtez le script et lancez
-   `python3 myfox_local_serverAutoAprenant.py --reset-password` (supprime tous les comptes).
+   `python3 myfox_local_serverAutoAprenant --reset-password` (supprime tous les comptes).
 2. **Comptes et profils** : le super admin crée un compte par personne (cartes *Comptes* et *Profils et droits*) et lui donne un **profil**.
    Trois profils sont fournis : *Admin* (ajouter des appareils et des scénarios, photos, vidéos...), *Utilisateur* (armer, désarmer, lancer
    des scénarios) et *Invité* (consultation seule). La **matrice à cocher** permet de régler chaque droit, de renommer, supprimer ou ajouter
